@@ -6,3 +6,5 @@ Micro-controller software for running an adafruit small reduction stepper motor,
 
 v-- Mapping Directory --v
 Java based software for reading from serial port (micro-controller output) and mapping it onto a 2D cartesian axis, maxY being the "front" of the device.
+(quick build/run instructions for a jar package)
+mvn clean package; java -jar target/ultra-mapper-0.01-SNAPSHOT.jar
