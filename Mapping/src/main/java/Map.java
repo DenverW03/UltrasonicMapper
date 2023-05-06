@@ -49,7 +49,6 @@ public class Map extends JPanel {
             temp[1] = (int)Math.floor(adj) * -1;
         }
         // important to remember that y axis is greater further down the JPanel
-        System.out.println(temp[0] + "," + temp[1] + ":" + a);
         return temp;
     }
 
