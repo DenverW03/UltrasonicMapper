@@ -15,7 +15,8 @@ void setup() {
 
 void loop() {
   int currentDistance = getDistance();
-  Serial.println(currentDistance);
+  Serial.print(currentDistance);
+  Serial.print("+");
   Serial.println(((double)currentAngle)/4);
   incrementAngle();
   delay(10);

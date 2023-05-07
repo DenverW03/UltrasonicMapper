@@ -5,14 +5,14 @@ import java.util.ArrayList;
 import java.lang.Math;
 public class Map extends JPanel {
     private ArrayList<Integer> distanceValues;
-    private ArrayList<Integer> angleValues;
+    private ArrayList<Double> angleValues;
     private int cx, cy;
     public Map(){
         super();
         this.setPreferredSize(new Dimension(450, 450)); // to fit readings up to 4m
         this.setBackground(Color.BLACK);
         distanceValues = new ArrayList<Integer>();
-        angleValues = new ArrayList<Integer>();
+        angleValues = new ArrayList<Double>();
         cx = 225;
         cy = 225;
     }
@@ -22,7 +22,7 @@ public class Map extends JPanel {
      * @param d the distance measured in cm
      * @param a the angle measured in degrees
      */
-    public void addMeasurement(int d, int a){
+    public void addMeasurement(int d, Double a){
         distanceValues.add(d);
         angleValues.add(a);
         repaint();
@@ -32,7 +32,7 @@ public class Map extends JPanel {
      * This method is used to calculate the vector displacement of the point using basic trig
      * @return returns int vector in form [x, y]
      */
-    public int[] calcVector(int d, int a){
+    public int[] calcVector(int d, Double a){
         double opp = Math.sin((double)((a * Math.PI) / 180)) * ((double)d);
         double adj = Math.sqrt((d * d) - (opp * opp));
         int[] temp = {(int)Math.floor(adj), (int)Math.floor(opp) * -1}; // for if angle is in rotational quadrant 1 or 3
