@@ -10,7 +10,16 @@ void setup() {
   pinMode(trigPin, OUTPUT);
   pinMode(echoPin, INPUT);
   stepper.Enable();
-  delay(1000);
+  while(true){
+    if (Serial.available() > 0) {
+      String data = Serial.readString();
+      data.trim();
+      Serial.println(data);
+      if(data.equals("start")){
+        break;
+      }
+    }
+  }
 }
 
 void loop() {
