@@ -33,7 +33,6 @@ void loop() {
 
 void incrementAngle(){
   if(currentAngle == ((360 * 4) - 1)){ 
-    stepper.Move(currentAngle * -1);
     currentAngle = 0;
     return;
   }
