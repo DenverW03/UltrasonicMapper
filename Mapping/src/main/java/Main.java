@@ -20,10 +20,7 @@ public class Main{
         for (SerialPort port: ports) {
 			System.out.println(port.getSystemPortName());
 		}
-        //Scanner scanner = new Scanner(System.in);
         System.out.println("Pick the port to use :)");
-        //String input = scanner.nextLine();
-        //SerialPort serialPort = SerialPort.getCommPort(input);
         // manually setting just for testing
         SerialPort serialPort = SerialPort.getCommPort("cu.usbmodem1112101");
         serialPort.setComPortParameters(9600, 8, 1, SerialPort.NO_PARITY);
@@ -61,7 +58,9 @@ public class Main{
             while ((line = reader.readLine()) != null) {
                 System.out.println(line);
                 String[] tokens = line.split("\\+");
-                map.addMeasurement(Integer.parseInt(tokens[0]), Double.parseDouble(tokens[1]));
+                // making the distance larger for testing visibility
+                // subtracting from 360 because the module is turning counter-clockwise right now
+                map.addMeasurement(Integer.parseInt(tokens[0]) * 25, 360.00 - Double.parseDouble(tokens[1]));
             }
         }
         catch(Exception e){
@@ -75,6 +74,7 @@ public class Main{
         Double j = 0.00;
         for(j = 0.00; j<361.00; j++){
             map.addMeasurement(i, j);
+            try{Thread.sleep(10);}catch(Exception e){System.out.println(e);};
         }
     }
 }

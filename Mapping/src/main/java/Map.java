@@ -24,7 +24,13 @@ public class Map extends JPanel {
      */
     public void addMeasurement(int d, Double a){
         distanceValues.add(d);
-        angleValues.add(a);
+        if(a >= 0.00 && a <= 90){
+            angleValues.add(90 - a);
+        }
+        else if(a >= 180.00 && a <= 270){
+            angleValues.add((90 - (a - 180)) + 180);
+        }
+        else angleValues.add(a);
         repaint();
     }
     
