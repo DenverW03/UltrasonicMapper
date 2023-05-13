@@ -29,7 +29,7 @@ public class Main{
         serialPort.setComPortParameters(9600, 8, 1, SerialPort.NO_PARITY);
         serialPort.setComPortTimeouts(SerialPort.TIMEOUT_READ_SEMI_BLOCKING, 0, 0);
         serialPort.openPort();
-        try{Thread.sleep(1000);}catch(Exception e){System.out.println(e);};
+        try{Thread.sleep(3000);}catch(Exception e){System.out.println(e);};
         System.out.println("Starting Mapper");
         sendStartMessage(serialPort);
         System.out.println("Reading Data");
@@ -44,7 +44,6 @@ public class Main{
         try{
             String startMsg = "start";
             byte[] byteMsg = startMsg.getBytes(StandardCharsets.US_ASCII);
-            //serialPort.writeBytes(byteMsg, byteMsg.length);
             OutputStream outputStream = serialPort.getOutputStream();
             outputStream.write(byteMsg);
         }
