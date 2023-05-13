@@ -14,7 +14,6 @@ void setup() {
     if (Serial.available() > 0) {
       String data = Serial.readString();
       data.trim();
-      Serial.println(data);
       if(data.equals("start")){
         break;
       }
