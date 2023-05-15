@@ -60,7 +60,7 @@ public class Main{
                 String[] tokens = line.split("\\+");
                 // making the distance larger for testing visibility
                 // subtracting from 360 because the module is turning counter-clockwise right now
-                map.addMeasurement(Integer.parseInt(tokens[0]) * 25, 360.00 - Double.parseDouble(tokens[1]));
+                map.addMeasurement(Integer.parseInt(tokens[0]), 360.00 - Double.parseDouble(tokens[1]));
             }
         }
         catch(Exception e){
