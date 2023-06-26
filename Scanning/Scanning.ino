@@ -1,9 +1,9 @@
 #include <TinyStepper.h>
-#define trigPin 7
-#define echoPin 6
+#define trigPin 5
+#define echoPin 4
 #define HALFSTEPS 4096  // Number of half-steps for a full rotation
-TinyStepper stepper(HALFSTEPS, 8, 9, 10, 11); // 8 IN1, 9 IN2, 10 IN3, 11 IN4
-int currentAngle = 0;
+TinyStepper stepper(HALFSTEPS, 6, 7, 8, 9); // 6 IN1, 7 IN2, 8 IN3, 9 IN4
+float currentAngle = 0.00;
 
 void setup() {
   Serial.begin(9600);
@@ -25,15 +25,15 @@ void loop() {
   int currentDistance = getDistance();
   Serial.print(currentDistance);
   Serial.print("+");
-  Serial.println(((double)currentAngle)/4);
+  Serial.println(currentAngle);
   incrementAngle();
   delay(10);
 }
 
 void incrementAngle(){
-  if(currentAngle == ((360 * 4) - 1)){ 
+  if(currentAngle == 360.00){ 
     stepper.Move(-1 * currentAngle);
-    currentAngle = 0;
+    currentAngle = 0.00;
     return;
   }
   stepper.Move(1);
